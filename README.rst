@@ -11,6 +11,8 @@ It is a fork of `Zooko O'Whielacronx`_ code.
 Usage
 -----
 
+::
+
   python setup.py flakes
   python setup.py flakes --exclude-packages=foo.bar,baz.qux
   python setup.py flakes --file=./results.log
