@@ -12,8 +12,7 @@ install_requires = [
     'pyflakes',
 ]
 
-
-setup(name='setuptools_flakes',
+setup(name='setuptools-flakes',
     version='0.1',
     description = "Setup tools command for pyflakes",
     long_description=README + '\n\n' + NEWS,
@@ -31,10 +30,11 @@ setup(name='setuptools_flakes',
     keywords='setuptools pyflakes',
     author='Xavier Barbosa',
     author_email='',
-    url='',
+    url='https://github.com/johnnoone/setuptools-pyflakes.git',
     license='BSD',
     packages=find_packages('src'),
-    package_dir = {'': 'src'},include_package_data=True,
+    package_dir = {'': 'src'},
+    include_package_data=True,
     zip_safe=False,
     install_requires=install_requires,
     entry_points={

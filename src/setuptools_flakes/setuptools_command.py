@@ -41,27 +41,27 @@ def checkPath(filename, outfile=None):
 class PyflakesCommand(setuptools.Command):
     description = "run pyflakes on all your modules"
     user_options = [
-        ('exclude-packages=', None, "omit these packages, modules"),
-        ('file=', None, "write into this file"),
+        ('flakes-exclude-packages=', None, "omit these packages, modules"),
+        ('flakes-file=', None, "write into this file"),
     ]
 
     def initialize_options(self):
-        self.exclude_packages = 'tests test'
-        self.file = None
+        self.flakes_exclude_packages = 'tests test'
+        self.flakes_file = None
 
     def finalize_options(self):
-        self.exclude_packages = [module.strip() for module in re.split('[\s,]+', self.exclude_packages)]
-        if self.file:
-            self.file = open(self.file, 'w')
+        self.flakes_exclude_packages = [module.strip() for module in re.split('[\s,]+', self.flakes_exclude_packages)]
+        if self.flakes_file:
+            self.flakes_file = open(self.flakes_file, 'w')
 
     def run(self):
         warnings = False
         base = self.get_finalized_command('build_py')
         for (package, module, file) in base.find_all_modules():
-            if package in self.exclude_packages:
+            if package in self.flakes_exclude_packages:
                 continue
 
-            if checkPath(file, self.file):
+            if checkPath(file, self.flakes_file):
                 warnings=True
         if warnings:
             sys.exit(1) # FAIL
